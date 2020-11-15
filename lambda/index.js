@@ -8,9 +8,19 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Welcome, you can say Hello or Help. Which would you like to try?';
+        const speakOutput = 'こんにちは';
+
+        let aplDocument = require('./apl/TemplateDocument.json');
+
+
         return handlerInput.responseBuilder
             .speak(speakOutput)
+            .addDirective({
+                type: 'Alexa.Presentation.APL.RenderDocument',
+                version: '1.4',
+                document: aplDocument,
+                datasources: { data: {} }
+            })
             .reprompt(speakOutput)
             .getResponse();
     }
@@ -113,8 +123,8 @@ exports.handler = Alexa.SkillBuilders.custom()
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler, // make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
-        ) 
+    )
     .addErrorHandlers(
         ErrorHandler,
-        )
+    )
     .lambda();
