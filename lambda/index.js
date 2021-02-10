@@ -11,15 +11,15 @@ const LaunchRequestHandler = {
         const speakOutput = 'こんにちは';
 
         let aplDocument = require('./apl/TemplateDocument.json');
-
+        let aplDataSource = require('./apl/TemplateDataSource.json');
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .addDirective({
                 type: 'Alexa.Presentation.APL.RenderDocument',
-                version: '1.4',
+                version: '1.5',
                 document: aplDocument,
-                datasources: { data: {} }
+                datasources: aplDataSource
             })
             .reprompt(speakOutput)
             .getResponse();

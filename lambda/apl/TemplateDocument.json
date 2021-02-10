@@ -1,6 +1,6 @@
 {
     "type": "APL",
-    "version": "1.4",
+    "version": "1.5",
     "settings": {},
     "theme": "dark",
     "import": [],
@@ -20,7 +20,7 @@
                 "items": [
                     {
                         "type": "Text",
-                        "text": "Type in the text for your layout...",
+                        "text": "${data.textStr}",
                         "fontSize": "16dp",
                         "paddingTop": "12dp",
                         "paddingBottom": "12dp",
