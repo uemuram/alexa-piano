@@ -38,6 +38,24 @@ const HelloWorldIntentHandler = {
             .getResponse();
     }
 };
+
+const TouchEventHandler = {
+    canHandle(handlerInput) {
+    return ((handlerInput.requestEnvelope.request.type === 'Alexa.Presentation.APL.UserEvent' &&
+        (handlerInput.requestEnvelope.request.source.handler === 'Press' || 
+        handlerInput.requestEnvelope.request.source.handler === 'onPress')));
+    },
+    handle(handlerInput) {
+        // TcouhWrapperのargumentsで指定したパラメータを取得する
+        const speechText = handlerInput.requestEnvelope.request.arguments[0];
+  
+        return handlerInput.responseBuilder
+            .speak(speechText)
+            .getResponse();            
+    }
+  };
+
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -119,6 +137,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         HelloWorldIntentHandler,
+        TouchEventHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,

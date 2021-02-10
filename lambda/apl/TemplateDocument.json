@@ -17,19 +17,28 @@
         "items": [
             {
                 "type": "Container",
+                "width": "100%",
+                "height": "100%",
+                "paddingTop": "100dp",
                 "items": [
                     {
-                        "type": "Text",
-                        "text": "${data.textStr}",
-                        "fontSize": "16dp",
-                        "paddingTop": "12dp",
-                        "paddingBottom": "12dp",
-                        "height": "32dp",
-                        "width": "300dp"
+                        "type": "TouchWrapper",
+                        "onPress": [
+                            {
+                                "type": "SendEvent",
+                                "arguments": "コーヒーをタッチしました。"
+                            }
+                        ],
+                        "items": [
+                            {
+                                "id": "speechText",
+                                "type": "Text",
+                                "text": "${data.textStr}",
+                                "fontSize": "10vw"
+                            }
+                        ]
                     }
-                ],
-                "height": "100%",
-                "width": "100%"
+                ]
             }
         ]
     }
