@@ -25,16 +25,17 @@
                         "type": "TouchWrapper",
                         "onPress": [
                             {
-                                "type": "SendEvent",
-                                "arguments": "コーヒーをタッチしました。"
+                                "type": "SpeakItem",
+                                "componentId": "speechText"
                             }
                         ],
                         "items": [
                             {
                                 "id": "speechText",
                                 "type": "Text",
-                                "text": "${data.textStr}",
-                                "fontSize": "10vw"
+                                "text": "読み上げテスト",
+                                "fontSize": "10vw",
+                                "speech": "${data.sample.properties.text}"
                             }
                         ]
                     }

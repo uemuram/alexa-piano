@@ -21,7 +21,6 @@ const LaunchRequestHandler = {
                 document: aplDocument,
                 datasources: aplDataSource
             })
-            .reprompt(speakOutput)
             .getResponse();
     }
 };
@@ -39,21 +38,21 @@ const HelloWorldIntentHandler = {
     }
 };
 
-const TouchEventHandler = {
-    canHandle(handlerInput) {
-    return ((handlerInput.requestEnvelope.request.type === 'Alexa.Presentation.APL.UserEvent' &&
-        (handlerInput.requestEnvelope.request.source.handler === 'Press' || 
-        handlerInput.requestEnvelope.request.source.handler === 'onPress')));
-    },
-    handle(handlerInput) {
-        // TcouhWrapperのargumentsで指定したパラメータを取得する
-        const speechText = handlerInput.requestEnvelope.request.arguments[0];
-  
-        return handlerInput.responseBuilder
-            .speak(speechText)
-            .getResponse();            
-    }
-  };
+// const TouchEventHandler = {
+//     canHandle(handlerInput) {
+//     return ((handlerInput.requestEnvelope.request.type === 'Alexa.Presentation.APL.UserEvent' &&
+//         (handlerInput.requestEnvelope.request.source.handler === 'Press' || 
+//         handlerInput.requestEnvelope.request.source.handler === 'onPress')));
+//     },
+//     handle(handlerInput) {
+//         // TcouhWrapperのargumentsで指定したパラメータを取得する
+//         const speechText = handlerInput.requestEnvelope.request.arguments[0];
+
+//         return handlerInput.responseBuilder
+//             .speak(speechText)
+//             .getResponse();            
+//     }
+//   };
 
 
 const HelpIntentHandler = {
@@ -137,7 +136,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         HelloWorldIntentHandler,
-        TouchEventHandler,
+        // TouchEventHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
