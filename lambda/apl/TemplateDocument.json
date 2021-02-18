@@ -12,7 +12,7 @@
     "layouts": {},
     "mainTemplate": {
         "parameters": [
-            "data"
+            "payload"
         ],
         "items": [
             {
@@ -31,11 +31,17 @@
                         ],
                         "items": [
                             {
-                                "id": "speechText",
-                                "type": "Text",
-                                "text": "読み上げテスト",
-                                "fontSize": "10vw",
-                                "speech": "${data.sample.properties.text}"
+                                "type": "Container",
+                                "direction": "row",
+                                "items": [
+                                    {
+                                        "type": "Text",
+                                        "speech": "${payload.sample.properties.text}",
+                                        "id": "speechText",
+                                        "text": "読み上げテスト",
+                                        "fontSize": "10vw"
+                                    }
+                                ]
                             }
                         ]
                     }

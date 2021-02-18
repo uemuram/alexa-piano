@@ -1,15 +1,13 @@
 {
-    "data": {
-        "sample": {
-            "properties": {
-                "text": "テストです"
-            },
-            "transformers": [
-                {
-                    "inputPath": "text",
-                    "transformer": "textToSpeech"
-                }
-            ]
-        }
+    "sample": {
+        "properties": {
+            "text": "テストです"
+        },
+        "transformers": [
+            {
+                "inputPath": "text",
+                "transformer": "textToSpeech"
+            }
+        ]
     }
 }

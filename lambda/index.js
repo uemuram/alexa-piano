@@ -8,22 +8,19 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'こんにちは';
-
-        let aplDocument = require('./apl/TemplateDocument.json');
-        let aplDataSource = require('./apl/TemplateDataSource.json');
+        const aplDocument = require('./apl/TemplateDocument.json');
+        const aplDataSource = require('./apl/TemplateDataSource.json');
 
         return handlerInput.responseBuilder
-            .speak(speakOutput)
             .addDirective({
                 type: 'Alexa.Presentation.APL.RenderDocument',
-                version: '1.5',
                 document: aplDocument,
                 datasources: aplDataSource
             })
             .getResponse();
     }
 };
+
 const HelloWorldIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
